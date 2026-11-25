@@ -69,8 +69,8 @@ Results go to `results/ppo/...` and `results/deprl/...`; open them in SCONE Stud
 
 ## 5. Gait imitation data (Camargo / AddBiomechanics)
 
-The derived reference files (`data/mimic/<subject>/*.npz`) are **not in git**, because they come from
-an external dataset. Regenerate them:
+The whole `data/` folder (scaled subject models and reference motions) is **not in git**, because it
+comes from an external dataset. Regenerate them:
 
 1. Download the Camargo 2021 treadmill `.b3d` file for the subject from
    [AddBiomechanics](https://addbiomechanics.org) and put it in `../Data/`
@@ -83,7 +83,7 @@ an external dataset. Regenerate them:
 
    The first run creates `.venv-data/` (Python 3.11 + nimblephysics, used only to read `.b3d`).
    The output is `data/mimic/AB07/AB07_reference.npz`, plus the scaled model in
-   `data/mimic/AB07/model/` (which is in git).
+   `data/mimic/AB07/model/`. Both are needed before any `sconemimic_*` config will run.
 
 3. Smoke test, then train:
 
@@ -106,8 +106,9 @@ an external dataset. Regenerate them:
 | `.venv/`, `.venv-data/`, `.tools/` | environments | `./setup.sh`, `mimic_prepare_subject.sh` |
 | `results/` | trained policies, rollouts (large binaries) | train, or copy from another machine |
 | `logs/` | training logs | created by the training scripts |
-| `data/mimic/*/*.npz` | derived from the Camargo dataset | `mimic_prepare_subject.sh` |
+| `data/` | scaled models + references, derived from the Camargo dataset | `mimic_prepare_subject.sh` |
 | `configs/.resolved/` | generated config copies | created at training time |
+| `*.pdf`, `*.png`, `*.pt`, `*.sto`, `*.npz`, `*.b3d`, `.b3d` inspection dumps | binaries / generated files, keeps the repo light | regenerate with the scripts (e.g. `data_inspect_b3d.py`, `*_plot.py`) |
 
 ## 7. Troubleshooting
 

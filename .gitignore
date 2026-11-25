@@ -8,4 +8,25 @@ configs/.resolved/
 results/
 .venv-data/
 # gait-imitation data derived from external datasets (regenerate with scripts/mimic_prepare_subject.sh)
-data/mimic/*/*.npz
+data/
+
+# keep the repo lightweight: no binaries, checkpoints, rollouts or generated dumps
+*.pdf
+*.png
+*.jpg
+*.mp4
+*.gif
+*.pt
+*.pth
+*.ckpt
+*.sto
+*.npz
+*.npy
+*.b3d
+*.zip
+*.tar.gz
+docs/camargo_b3d_inspection*.txt
+docs/camargo_walking_stats.txt
+docs/camargo_*.txt
+# subject data (scaled models, references) - rebuild with scripts/mimic_prepare_subject.sh
+data/

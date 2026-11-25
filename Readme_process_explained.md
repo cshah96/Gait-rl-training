@@ -431,7 +431,7 @@ Training-time numbers include exploration noise. With the deterministic mean pol
 
 **The second run (2026-11-18, on this machine, `results/ppo/20261118_114942_const_1p2/`)** used identical settings. It took **39 min 22 s** (avg ~8,500 steps/s). Its breakthrough came later, at **13.1M → 13.8M steps** (`len` 204 → 768). Its final checkpoint also walks **19/20** episodes at 1.21 m/s (speed error 0.02–0.03), and 2 of 3 starts walked 60 s / 72.5 m. Its `best.pt` (update 2370) walks only 10/20: "best" is chosen from a noisy training average, so **always evaluate the final checkpoint**. The remaining ~5 % of falls happen in the first 2–3 s, from the few randomised start states the policy cannot recover from. Details are in `docs/VERIFICATION.md`.
 
-Note that an early 5M-step validation run (`results/ppo/20261104_190009_validation/`, curves in `docs/ppo_validation_5M.png`) never walked. In a 5M-step run the learning rate anneals to 0 before the breakthrough at about 11M steps, so short runs are not just "less trained"; they stop too early.
+Note that an early 5M-step validation run (`results/ppo/20261104_190009_validation/`, curves in `docs/ppo_validation_5M.png`, local only) never walked. In a 5M-step run the learning rate anneals to 0 before the breakthrough at about 11M steps, so short runs are not just "less trained"; they stop too early.
 
 ---
 

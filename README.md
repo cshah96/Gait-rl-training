@@ -141,7 +141,7 @@ scone-rl/
 │   └── deprl/
 ├── docs/
 │   ├── VERIFICATION.md           record of the tests and benchmarks run on this machine
-│   └── ppo_validation_5M.png     curves of the early 5M-step PPO validation run
+│   └── ppo_validation_5M.png     curves of the early 5M-step PPO validation run (local only, not in git)
 ├── third_party/depRL/            git submodule: tgeijten/depRL @ sconegym
 ├── logs/                         stdout logs (git-ignored)
 ├── .venv/  .tools/               Python env (git-ignored)

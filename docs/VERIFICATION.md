@@ -54,7 +54,7 @@ Rollouts for SCONE Studio were generated in `run_checkpoint_19996672/` (3 episod
 | Run | What |
 |---|---|
 | `results/ppo/20261105_101425_const_1p2_full/` | the original 20M-step run (Windows). Walks. Its checkpoints were renamed from `ckpt_<update>.pt` to `checkpoints/step_<env steps>.pt` so SCONE Studio lists them. |
-| `results/ppo/20261104_190009_validation/` | 5M-step validation run. **Does not walk**: the learning rate anneals to zero before the ~11–14M-step breakthrough. Curves in `docs/ppo_validation_5M.png`. |
+| `results/ppo/20261104_190009_validation/` | 5M-step validation run. **Does not walk**: the learning rate anneals to zero before the ~11–14M-step breakthrough. Curves in `docs/ppo_validation_5M.png` (local only, not in git; regenerate with `scripts/ppo_plot.py`). |
 
 All checkpoints, `progress.csv`, `config.json` and the stdout log were compared with the originals (identical) before `../gait-training` was deleted.
 

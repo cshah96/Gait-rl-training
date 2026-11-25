@@ -124,7 +124,7 @@ results/deprl/sconemimic_h2190_ab07/<run>/checkpoints/step_*.pt
 
 **Splits (per subject):** 0 = level ground clockwise, 1 = level ground counter-clockwise, 2–3 = ramps, 4 = stairs, **5 = treadmill**. Overground trials only contain 1–2 steady strides between standing and turning, and force data is often missing. **Treadmill (split 5) is the one to use:** about 1,000 s per subject, belt speeds 0.5–2.0 m/s, and force data on 100 % of frames.
 
-**What a `.b3d` contains** (`scripts/data_inspect_b3d.py`; full dumps in `docs/camargo_b3d_inspection*.txt`):
+**What a `.b3d` contains** (`scripts/data_inspect_b3d.py`; run it to get the full dump, e.g. `.venv-data/bin/python scripts/data_inspect_b3d.py ../Data/AB07_split5-001.b3d > docs/camargo_b3d_inspection_AB07.txt`; dumps are not kept in git):
 
 | Kind | Content |
 |---|---|
@@ -144,7 +144,7 @@ We use the **DYNAMICS** pass. Its kinematics and kinetics are consistent with ea
 | AB09 | f | 1.63 m | 63.5 kg | 1,004 s | 0.47–1.77 m/s |
 | AB11 | m | 1.75 m | 77.1 kg | 1,004 s | 0.48–1.84 m/s |
 
-Quality per segment (speed, cadence, peak forces and moments) is in `docs/camargo_treadmill_stats.txt`.
+Quality per segment (speed, cadence, peak forces and moments) is in `docs/camargo_treadmill_stats.txt` (local only, not in git).
 
 > **Gotcha: nimblephysics 0.10.x segfaults when its objects are freed.** All scripts that read `.b3d` files keep the objects in a global list and end with `os._exit(0)`. If you write your own reader, do the same, or it will crash at exit (or between files).
 
