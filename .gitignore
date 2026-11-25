@@ -1,0 +1,11 @@
+.venv/
+.tools/
+__pycache__/
+*.pyc
+logs/
+configs/.resolved/
+# trained policies / rollouts (large binary files - stored here, not in git)
+results/
+.venv-data/
+# gait-imitation data derived from external datasets (regenerate with scripts/mimic_prepare_subject.sh)
+data/mimic/*/*.npz

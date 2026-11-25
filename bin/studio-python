@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# -----------------------------------------------------------------------------
+# Python launcher for SCONE Studio (Tools -> Preferences -> Sconegym -> python).
+#
+# When you double-click a checkpoint called step_<N>.pt, SCONE Studio runs:
+#     <this file> -m deprl.play --checkpoint_file <.../checkpoints/step_N.pt> --num_episodes <n>
+#
+# This wrapper:
+#   * PPO checkpoint (its run folder has config.json)  -> scripts/ppo_evaluate.py
+#   * anything else (depRL run folder has config.yaml) -> python -m deprl.play (unchanged)
+# Either way the .sto files appear in <run>/run_checkpoint_<N>/ next to checkpoints/.
+# -----------------------------------------------------------------------------
+ROOT="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/.." && pwd)"
+PY="$ROOT/.venv/bin/python"
+export SCONE_PATH="${SCONE_PATH:-/opt/scone}"
+
+if [ "$1" = "-m" ] && [ "$2" = "deprl.play" ]; then
+    ckpt=""; episodes=5
+    args=("$@")
+    for ((i = 2; i < ${#args[@]}; i++)); do
+        case "${args[$i]}" in
+            --checkpoint_file) ckpt="${args[$((i + 1))]}" ;;
+            --num_episodes)    episodes="${args[$((i + 1))]}" ;;
+        esac
+    done
+    if [ -n "$ckpt" ]; then
+        run_dir="$(dirname "$(dirname "$ckpt")")"
+        if [ -f "$run_dir/config.json" ]; then
+            exec "$PY" "$ROOT/scripts/ppo_evaluate.py" "$ckpt" --episodes "$episodes"
+        fi
+    fi
+fi
+exec "$PY" "$@"

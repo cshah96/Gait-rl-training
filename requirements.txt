@@ -1,0 +1,12 @@
+# Runtime dependencies for depRL + sconegym (Python 3.9).
+# torch is installed separately by setup.sh (CUDA 12.8 build for RTX 50xx);
+# depRL and sconegym are installed editable with --no-deps.
+numpy==1.26.4
+gym==0.13.0
+pyyaml>=6.0
+termcolor>=2.2
+pandas>=2.0,<2.3
+gdown>=5.1
+matplotlib
+setuptools<71
+wheel

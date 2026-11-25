@@ -1,0 +1,4 @@
+[submodule "third_party/depRL"]
+	path = third_party/depRL
+	url = https://github.com/tgeijten/depRL.git
+	branch = sconegym
